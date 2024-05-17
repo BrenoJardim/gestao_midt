@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Fornecedor - Gestão Midt</title>
+    <style>
+        /* Estilos CSS aqui */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .user-access-btn {
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .user-access-btn:hover {
+            background-color: #bbb;
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 50px);
+        }
+
+        .sidebar {
+            background-color: #f0f0f0;
+            width: 20%;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid #ccc;
+        }
+
+        .navigation {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigation li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .navigation li:last-child {
+            border-bottom: none;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation a:hover {
+            background-color: #ddd;
+        }
+
+        .expandable-header {
+            background-color: #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .expandable-header:hover {
+            background-color: #bbb;
+        }
+
+        .expandable-body {
+            display: none;
+            padding-left: 10px;
+        }
+
+        .expandable-btn.active + .expandable-body {
+            display: block;
+        }
+
+        .content {
+            width: 80%;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Estilos para o formulário de edição de cliente */
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus {
+            border-color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1 style="margin: 0;">Gestão Midt</h1>
+        <button class="user-access-btn">Acesso do Usuário</button>
+    </div>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="/images/logo.jpeg" alt="Logo da Empresa">
+            </div>
+            <!-- Botão expansível para Cadastros -->
+            <div class="expandable-header">Cadastros</div>
+            <div class="expandable-body">
+                <ul class="navigation">
+                    <li><a href="/cadastro_produtos">Cadastro de Produtos</a></li>
+                    <li><a href="/cadastro_clientes">Cadastro de Clientes</a></li>
+                    <li><a href="/cadastro_fornecedores">Cadastro de Fornecedores</a></li>
+                </ul>
+            </div>
+            <!-- Botão expansível para Vendas -->
+            <div class="expandable-header">Vendas</div>
+            <div class="expandable-body">
+                <ul class="navigation">
+                    <li><a href="/venda_balcao">Venda Balcão</a></li>
+                    <li><a href="/venda_produtos">Venda de Produtos</a></li>
+                </ul>
+            </div>
+            <!-- Botão expansível para Estoque -->
+            <div class="expandable-header">Estoque</div>
+            <div class="expandable-body">
+                <ul class="navigation">
+                    <li><a href="/compras">Compras</a></li> <!-- Adiciona a opção "Compras" -->
+                    <li><a href="/adicao_sitio">Adições do Sitio</a></li> <!-- Adiciona a opção "Adições do Sitio" -->
+                </ul>
+            </div>
+            <!-- Botão expansível para Financeiro -->
+            <div class="expandable-header">Financeiro</div>
+            <div class="expandable-body">
+                <ul class="navigation">
+                    <li><a href="/financeiro">Caixa</a></li> <!-- Adiciona a opção "Caixas" -->
+                    <li><a href="/contas_receber">Contas a Receber</a></li> <!-- Adiciona a opção "Contas a Receber" -->
+                    <li><a href="/contas_pagar">Contas a Pagar</a></li> <!-- Adiciona a opção "Contas a Pagar" -->
+                    <li><a href="/fluxo_caixa">Fluxo de Caixa</a></li> <!-- Adiciona a opção "Fluxo de Caixa" -->
+                </ul>
+            </div>
+            <!-- Links diretos para listagens -->
+            <ul class="navigation">
+                <li><a href="/listar_clientes">Clientes</a></li>
+                <li><a href="/listar_fornecedores">Fornecedores</a></li>
+                <li><a href="/listar_produtos">Produtos</a></li>
+                <li><a href="/relatorio_vendas">Relatórios</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="form-container">
+                <form action="/editar_fornecedor/{{ fornecedor[0] }}" method="POST">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" value="{{ fornecedor[1] }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone:</label>
+                        <input type="tel" id="telefone" name="telefone" value="{{ fornecedor[2] }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="endereco">Endereço:</label>
+                        <input type="text" id="endereco" name="endereco" value="{{ fornecedor[3] }}" required>
+                    </div>
+                    <input type="submit" value="Salvar Alterações">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const expandableBtns = document.querySelectorAll('.expandable-header');
+        expandableBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.classList.toggle('active');
+                const body = this.nextElementSibling;
+                if (body.style.display === "block") {
+                    body.style.display = "none";
+                } else {
+                    body.style.display = "block";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
